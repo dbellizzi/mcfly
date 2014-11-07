@@ -22,7 +22,10 @@ class Action {
    * @constructor
    */
   dispatch() {
-    Dispatcher.dispatch(this.callback.apply(this, arguments));
+    var result = this.callback.apply(this, arguments);
+    if (result) {
+      Dispatcher.dispatch(result);
+    }
   }
 }
 
